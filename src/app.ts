@@ -9,6 +9,7 @@ import { connectDB } from "./config/db";
 import { authRouter } from "./routes/auth";
 import { shootRouter } from "./routes/shoots";
 import { deliverableRouter } from "./routes/deliverables";
+import { aiRouter } from "./routes/ai";
 
 // Builds the app and stops. It never opens a port by itself.
 export const app = express();
@@ -63,6 +64,7 @@ app.get("/api/health", (_req: Request, res: Response) => {
 app.use("/api/auth", authRouter);
 app.use("/api/shoots", shootRouter);
 app.use("/api/deliverables", deliverableRouter);
+app.use("/api/ai", aiRouter);  
 
 // Nothing matched: answer in JSON instead of Express's HTML page
 app.use((req: Request, res: Response) => {
